@@ -19,7 +19,10 @@ class _WorkspaceIconWidgetState extends ConsumerState<WorkspaceIconWidget> {
   Widget build(BuildContext context) {
     final workspaceIcon = ref.watch(workspaceIconProvider(widget.workspaceId));
     return workspaceIcon.when(
-      data: (icon) => icon,
+      data: (icon) => AspectRatio(
+        aspectRatio: 1.0,
+        child: icon,
+      ),
       loading: () => Image.asset('assets/app_icon.png'),
       error: (err, stack) => Image.asset('assets/app_icon.png'),
     );
